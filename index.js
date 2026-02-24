@@ -397,6 +397,13 @@ const EASTER_EGGS = [
     ],
     cooldownMs: 5 * 60 * 1000,
   },
+    {
+    triggers: ["Penis", "Dick"],
+    replies: [
+      "<:penisuwu:1475933479874072616>",
+    ],
+    cooldownMs: 5 * 60 * 1000,
+  },
 ];
 
 
@@ -651,3 +658,4 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
