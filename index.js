@@ -3,6 +3,7 @@ import { Client, GatewayIntentBits, EmbedBuilder } from "discord.js";
 import fs from "node:fs";
 import path from "node:path";
 import cron from "node-cron";
+import { setupHiddenXp } from "./src/xp/xpListener.js";
 
 // --- Daily tracking (RAM only) ---
 const seenDaily = new Map(); // userId -> dayKey
@@ -19,6 +20,7 @@ const client = new Client({
   ],
 });
 
+setupHiddenXp(client, { cooldownMs: 45_000 });
 
 const STATE_PATH = path.join(process.cwd(), "state.json");
 
@@ -608,6 +610,7 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
