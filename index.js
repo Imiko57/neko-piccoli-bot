@@ -196,32 +196,6 @@ const DAILY_USERS = new Map([
   "[EN] Imiko's single brain cell handles coding, fun, and bedtime scheduling flawlessly. [DE] Imikos einzelne Gehirnzelle übernimmt Coding, Spaß und Schlafenszeit-Planung fehlerfrei.",
   "[EN] That one brain cell is doing more work than most teams combined. [DE] Diese eine Gehirnzelle leistet mehr Arbeit als die meisten Teams zusammen.",
   ]}],
-  ["493384442795261954", {
-    name: "Lazy",
-    replies: [
-  "[EN] Lazy is awake. This can only mean it's night or trouble. [DE] Lazy ist wach. Das kann nur bedeuten: Nacht oder Ärger.",
-  "[EN] Daytime Lazy is asleep. Nighttime Lazy is a lifestyle choice. [DE] Tagsüber schläft Lazy. Nachts ist Lazy eine Lebenseinstellung.",
-  "[EN] Money on his mind, speed in his veins, naps in his schedule. [DE] Geld im Kopf, Geschwindigkeit im Blut, Nickerchen im Zeitplan.",
-  "[EN] Lazy loves fast cars and slow mornings. [DE] Lazy liebt schnelle Autos und langsame Morgen.",
-  "[EN] Some people wake up early. Lazy wakes up eventually. [DE] Manche Menschen stehen früh auf. Lazy steht irgendwann auf.",
-  "[EN] Driving too fast is not a habit, it's a personality. [DE] Zu schnell fahren ist keine Angewohnheit, es ist eine Persönlichkeit.",
-  "[EN] He fights sometimes, sleeps often, and loves intensely. [DE] Er kämpft manchmal, schläft oft und liebt intensiv.",
-  "[EN] Lazy is either asleep, driving too fast, or thinking about money. [DE] Lazy schläft entweder, fährt zu schnell oder denkt über Geld nach.",
-  "[EN] His relationship with sleep is complicated but committed. [DE] Seine Beziehung zum Schlaf ist kompliziert, aber verbindlich.",
-  "[EN] Keksqueen typed something. Lazy felt that emotionally. [DE] Keksqueen hat etwas geschrieben. Lazy hat das emotional gespürt.",
-  "[EN] He loves Keksqueen with the intensity of a bad financial decision. [DE] Er liebt Keksqueen mit der Intensität einer schlechten finanziellen Entscheidung.",
-  "[EN] Emotionally independent? No. Loyal? Absolutely. [DE] Emotional unabhängig? Nein. Loyal? Absolut.",
-  "[EN] Fast cars, slow replies. [DE] Schnelle Autos, langsame Antworten.",
-  "[EN] If Lazy is awake during the day, something is wrong. [DE] Wenn Lazy tagsüber wach ist, stimmt etwas nicht.",
-  "[EN] He lives in Amsterdam and drives like the rules are optional. [DE] Er lebt in Amsterdam und fährt, als wären Regeln optional.",
-  "[EN] Sleep is his hobby. Chaos is his side quest. [DE] Schlaf ist sein Hobby. Chaos ist seine Nebenquest.",
-  "[EN] Lazy doesn't look for fights, but he won't avoid them either. [DE] Lazy sucht keine Kämpfe, aber er geht ihnen auch nicht aus dem Weg.",
-  "[EN] Money talks. Lazy listens. [DE] Geld spricht. Lazy hört zu.",
-  "[EN] His love language is loyalty and questionable choices. [DE] Seine Liebessprache ist Loyalität und fragwürdige Entscheidungen.",
-  "[EN] Lazy is proof that being tired doesn't mean being lazy. [DE] Lazy ist der Beweis, dass müde sein nicht faul sein bedeutet.",
-  "[EN] He may act chill, but his emotions go 200 km/h. [DE] Er wirkt entspannt, aber seine Emotionen fahren 200 km/h.",
-  "[EN] Sleep hard, drive fast, love deeper than planned. [DE] Hart schlafen, schnell fahren, tiefer lieben als geplant.",
-]}],
   ["283293906664161280", {
     name: "Zücho",
     replies: [
@@ -244,30 +218,6 @@ const DAILY_USERS = new Map([
   "[EN] Sleep schedules rotate, performance stays consistent. [DE] Schlafpläne rotieren, die Leistung bleibt konstant.",
   "[EN] He respects skill, rewards effort, and ignores excuses. [DE] Er respektiert Skill, belohnt Einsatz und ignoriert Ausreden.",
   "[EN] Not playing with us isn't personal. It's strategic. [DE] Nicht mit uns zu spielen ist nichts Persönliches. Es ist strategisch.",
-  ]}],
-  ["179957267813105664", {
-    name: "Genu",
-    replies: [
-  "[EN] Genu has entered the chat with anime confidence and a very active wallet. [DE] Genu hat den Chat mit Anime-Selbstvertrauen und einer sehr aktiven Geldbörse betreten.",
-  "[EN] Baby dolphin detected. Strong, shiny, and dangerously up to date. [DE] Baby-Delfin erkannt. Stark, glänzend und gefährlich up to date.",
-  "[EN] He's not the biggest whale, but he definitely splashes money confidently. [DE] Er ist nicht der größte Wal, aber Geld auszugeben macht er sehr selbstbewusst.",
-  "[EN] Patch notes memorized. Bank account slightly concerned. [DE] Patchnotes auswendig gelernt. Bankkonto leicht besorgt.",
-  "[EN] Genu believes he is the best LoL player. Statistics are still reviewing this. [DE] Genu glaubt, er ist der beste LoL-Spieler. Die Statistiken prüfen das noch.",
-  "[EN] Anime protagonist energy detected. Main character syndrome confirmed. [DE] Anime-Protagonisten-Energie erkannt. Main-Character-Syndrom bestätigt.",
-  "[EN] He starts arguing before fully understanding the situation. Passion matters. [DE] Er fängt an zu diskutieren, bevor er die Situation ganz verstanden hat. Leidenschaft zählt.",
-  "[EN] Genu doesn't just play the game. He invests emotionally and financially. [DE] Genu spielt das Spiel nicht nur. Er investiert emotional und finanziell.",
-  "[EN] Always up to date, always ready, always convinced he's right. [DE] Immer up to date, immer bereit, immer überzeugt, recht zu haben.",
-  "[EN] Anime taught him two things: never back down and always believe in yourself. [DE] Anime hat ihm zwei Dinge beigebracht: niemals zurückweichen und immer an sich selbst glauben.",
-  "[EN] When drama appears, Genu switches into protector mode immediately. [DE] Wenn Drama auftaucht, schaltet Genu sofort in den Beschützer-Modus.",
-  "[EN] Baby dolphin status: strong enough to flex, not strong enough to stop flexing. [DE] Baby-Delfin-Status: stark genug zum Flexen, nicht stark genug, um damit aufzuhören.",
-  "[EN] Apple eaten. Confidence restored. [DE] Apfel gegessen. Selbstvertrauen wiederhergestellt.",
-  "[EN] Genu's power scales with patch notes and ego. [DE] Genus Stärke skaliert mit Patchnotes und Ego.",
-  "[EN] If confidence was currency, Genu would be a whale. [DE] Wenn Selbstvertrauen eine Währung wäre, wäre Genu ein Wal.",
-  "[EN] He argues for Keksqueen like it's a personal quest. [DE] Er diskutiert für Keksqueen, als wäre es eine persönliche Quest.",
-  "[EN] Anime fan, LoL expert, apple enthusiast. [DE] Anime-Fan, LoL-Experte, Apfel-Enthusiast.",
-  "[EN] Genu believes skill is everything. Wallet helps. [DE] Genu glaubt, Skill ist alles. Die Geldbörse hilft.",
-  "[EN] He is always prepared for the next update, the next fight, and the next argument. [DE] Er ist immer vorbereitet auf das nächste Update, den nächsten Kampf und die nächste Diskussion.",
-  "[EN] Baby dolphin energy with main character dialogue. [DE] Baby-Delfin-Energie mit Main-Character-Dialog.",
   ]}],
 ]);
 
@@ -394,13 +344,6 @@ const EASTER_EGGS = [
     triggers: ["GBSB"],
     replies: [
       "[EN] Did you know we have our own Drama? Keksqueen wrote one of our Journey check it out here: <#1452057948066025502>\n [DE] Wusstest du, dass wir unser eigenes Drama haben? Keksqueen hat von unsere Reise ein Drama geschrieben. Schau es dir hier an: <#1452057948066025502>\n",
-    ],
-    cooldownMs: 5 * 60 * 1000,
-  },
-    {
-    triggers: ["body", "körper"],
-    replies: [
-      "[EN] Seems like Lazy's heart doesn't belong to Keksqueen anymore, but his body still belongs to his bed [DE] Es scheint, als gehöre Lazy's Herz nicht mehr Keksqueen, aber sein Körper gehöre immer noch seinem Bett",
     ],
     cooldownMs: 5 * 60 * 1000,
   },
@@ -665,5 +608,6 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
