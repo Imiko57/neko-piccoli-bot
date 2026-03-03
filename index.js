@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import cron from "node-cron";
 import { setupHiddenXp } from "./src/xp/xpListener.js";
+import { setupSecretWordTracker } from "./src/secret/secretWordListener.js";
 
 // --- Daily tracking (RAM only) ---
 const seenDaily = new Map(); // userId -> dayKey
@@ -21,7 +22,11 @@ const client = new Client({
 });
 
 const xpService = setupHiddenXp(client, { cooldownMs: 45_000 });
+const secretSvc = setupSecretWordTracker(client, {
+  secretWord: process.env.SECRET_WORD,
+});
 const STATE_PATH = path.join(process.cwd(), "state.json");
+
 
 // debounce saves so you don’t write on every message
 let saveTimer = null;
@@ -621,6 +626,7 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
