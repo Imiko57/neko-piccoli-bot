@@ -307,7 +307,7 @@ const EASTER_EGGS = [
     {
     triggers: ["drama"],
     replies: [
-      "[EN] [EN] We should pitch your dramas to Netflix... Infinite money glitch. [DE] Wir sollten eure Dramen an Netflix pitchen... Infinite money glitch.",
+      "[EN] We should pitch your dramas to Netflix... Infinite money glitch. [DE] Wir sollten eure Dramen an Netflix pitchen... Infinite money glitch.",
     ],
     cooldownMs: 5 * 60 * 1000,
   },
@@ -645,6 +645,7 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
