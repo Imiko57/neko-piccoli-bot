@@ -20,8 +20,7 @@ const client = new Client({
   ],
 });
 
-setupHiddenXp(client, { cooldownMs: 45_000 });
-
+const xpService = setupHiddenXp(client, { cooldownMs: 45_000 });
 const STATE_PATH = path.join(process.cwd(), "state.json");
 
 // debounce saves so you don’t write on every message
@@ -451,6 +450,18 @@ client.on("interactionCreate", async (interaction) => {
       await interaction.editReply(`⚠️ MOTD fetch failed: ${e?.message ?? e}`);
     }
   }
+    
+    else if (interaction.commandName === "title") {
+  const row = xpService.getUser(interaction.guildId, interaction.user.id);
+  const title = row?.title?.trim();
+
+  await interaction.reply({
+    content: title
+      ? `🪪 **Your secret title:** ${title}`
+      : `🪪 **Your secret title:** —\nKeep chatting. Something might unlock later 👀`,
+    ephemeral: true,
+  });
+}
 
   // --- /stats ---
 else if (interaction.commandName === "stats") {
@@ -610,6 +621,7 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
