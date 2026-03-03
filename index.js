@@ -468,6 +468,25 @@ client.on("interactionCreate", async (interaction) => {
   });
 }
 
+else if (interaction.commandName === "leaderboard") {
+  const top = secretSvc.getTop(interaction.guildId, 10);
+
+  if (!top.length) {
+    return interaction.reply({
+      content: "🏆 **Mystery Leaderboard**\nNo hits recorded yet… 👀",
+      ephemeral: false,
+    });
+  }
+
+  const lines = top.map((r, i) => `${i + 1}. <@${r.user_id}> — **${r.score}**`);
+
+  await interaction.reply({
+    content: `🏆 **Mystery Leaderboard**\n${lines.join("\n")}`,
+    allowedMentions: { users: [] }, // prevents pings
+    ephemeral: true,                // keep it “secret”; set false if you want it public
+  });
+}
+  
   // --- /stats ---
 else if (interaction.commandName === "stats") {
   const today = berlinDayKey();
@@ -626,6 +645,7 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
