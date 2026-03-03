@@ -483,7 +483,7 @@ else if (interaction.commandName === "leaderboard") {
   await interaction.reply({
     content: `🏆 **Mystery Leaderboard**\n${lines.join("\n")}`,
     allowedMentions: { users: [] }, // prevents pings
-    ephemeral: true,                // keep it “secret”; set false if you want it public
+    ephemeral: false,                // keep it “secret”; set false if you want it public
   });
 }
   
@@ -645,6 +645,7 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
