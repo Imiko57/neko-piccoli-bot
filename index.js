@@ -464,7 +464,7 @@ client.on("interactionCreate", async (interaction) => {
     content: title
       ? `🪪 **Your secret title:** ${title}`
       : `🪪 **Your secret title:** —\nKeep chatting. Something might unlock later 👀`,
-    ephemeral: true,
+    ephemeral: false,
   });
 }
 
@@ -645,6 +645,7 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
