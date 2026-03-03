@@ -20,9 +20,17 @@ const commands = [
     .setName("stats")
     .setDescription("Show bot stats for today")
     .toJSON(),
+
+  new SlashCommandBuilder()
+    .setName("title")
+    .setDescription("Show your secret guild title")
+    .toJSON(),
+
+  new SlashCommandBuilder()
+    .setName("leaderboard")
+    .setDescription("Show the mystery leaderboard")
+    .toJSON(),
 ];
-
-
 
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
@@ -31,9 +39,5 @@ const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
     Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
     { body: commands }
   );
-  console.log("✅ Registered /motd");
+  console.log("✅ Registered guild commands: /motd /stats /title /leaderboard");
 })();
-
-
-
-
