@@ -92,26 +92,6 @@ const DAILY_USERS = new Map([
     "[EN] Calm like fresh snow, expressive like a bunny. [DE] Ruhig wie frischer Schnee, ausdrucksstark wie ein Häschen.",
     "[EN] Snow Bunny energy: cozy, cute, and emotionally invested. [DE] Schnee Häschen-Energie: gemütlich, süß und emotional dabei.",
   ]}],
-  ["573175449430130688", {
-    name: "Violetta",
-    replies: [
-  "[EN] Ah, Violetta wrote something. Everyone stay calm and pretend to be mature adults. [DE] Ah, Violetta hat etwas geschrieben. Alle ruhig bleiben und so tun, als wären wir reife Erwachsene.",
-  "[EN] Warning: Violetta has entered the chat. Direct questions may follow. Survival not guaranteed. [DE] Warnung: Violetta hat den Chat betreten. Direkte Fragen können folgen. Überleben nicht garantiert.",
-  "[EN] Wine detected. Or wait… alcohol-free wine. The plot thickens. [DE] Wein entdeckt. Oder warte … alkoholfreier Wein. Die Handlung verdichtet sich.",
-  "[EN] Ah yes, the bath philosopher has returned. Moisturized, relaxed, and dangerous. [DE] Ah ja, die Badewannen-Philosophin ist zurück. Eingecremt, entspannt und gefährlich.",
-  "[EN] Whenever Violetta types, at least three people suddenly sit up straight. [DE] Jedes Mal, wenn Violetta schreibt, setzen sich mindestens drei Leute plötzlich gerade hin.",
-  "[EN] Violetta is the only person who can say one sentence and cause panic in five channels. [DE] Violetta ist die einzige Person, die mit einem Satz Panik in fünf Channels auslösen kann.",
-  "[EN] If intelligence was a weapon, Violetta would already own this server. [DE] Wenn Intelligenz eine Waffe wäre, würde Violetta diesen Server bereits besitzen.",
-  "[EN] She's back, probably warm, probably damp, definitely judging you. [DE] Sie ist zurück, wahrscheinlich warm, wahrscheinlich feucht, definitiv wertend.",
-  "[EN] Violetta has returned from the bath. Steam levels: concerning. [DE] Violetta ist aus dem Bad zurück. Dampflevel: besorgniserregend.",
-  "[EN] She types like she already knows the answer and is just watching you struggle. [DE] Sie schreibt, als wüsste sie die Antwort längst und würde dir nur beim Kämpfen zusehen.",
-  "[EN] Violetta asks questions that make men suddenly remember appointments. [DE] Violetta stellt Fragen, bei denen Männer sich plötzlich an Termine erinnern.",
-  "[EN] Some people enter the chat. Violetta makes an entrance. [DE] Manche betreten den Chat. Violetta hat einen Auftritt.",
-  "[EN] Wine glass in hand, brain fully loaded. Dangerous combination. [DE] Weinglas in der Hand, Gehirn voll geladen. Gefährliche Kombination.",
-  "[EN] She's calm, she's clean, and she's about to cause emotional damage. [DE] Sie ist ruhig, sie ist sauber und sie ist dabei, emotionalen Schaden anzurichten.",
-  "[EN] Violetta does not flirt. She evaluates. [DE] Violetta flirtet nicht. Sie bewertet.",
-  "[EN] Every time she types, someone reconsiders their life choices. [DE] Jedes Mal, wenn sie schreibt, überdenkt jemand seine Lebensentscheidungen.",
-  ]}],
   ["340204841617850369", {
     name: "Endless",
     replies: [
@@ -201,29 +181,6 @@ const DAILY_USERS = new Map([
   "[EN] He may have only one brain cell, but it runs on enterprise-grade efficiency. [DE] Er mag nur eine Gehirnzelle haben, aber sie läuft mit Enterprise-Niveau-Effizienz.",
   "[EN] Imiko's single brain cell handles coding, fun, and bedtime scheduling flawlessly. [DE] Imikos einzelne Gehirnzelle übernimmt Coding, Spaß und Schlafenszeit-Planung fehlerfrei.",
   "[EN] That one brain cell is doing more work than most teams combined. [DE] Diese eine Gehirnzelle leistet mehr Arbeit als die meisten Teams zusammen.",
-  ]}],
-  ["283293906664161280", {
-    name: "Zücho",
-    replies: [
-  "[EN] While Violetta sleeps, Zücho grinds. Balance is important. [DE] Während Violetta schläft, grindet Zücho. Balance ist wichtig.",
-  "[EN] She goes to bed, he queues another match. Love finds a way. [DE] Sie geht ins Bett, er queued ein weiteres Match. Liebe findet einen Weg.",
-  "[EN] Zücho doesn't play for fun. He plays for results. [DE] Zücho spielt nicht zum Spaß. Er spielt für Ergebnisse.",
-  "[EN] He talks big because he can actually back it up. [DE] Er redet groß, weil er es auch wirklich untermauern kann.",
-  "[EN] Zücho plays in the best guild because losing is not a hobby. [DE] Zücho spielt in der besten Gilde, weil Verlieren kein Hobby ist.",
-  "[EN] Rewards matter. Progress matters. Sleep is optional. [DE] Belohnungen zählen. Fortschritt zählt. Schlaf ist optional.",
-  "[EN] He logs off right when Violetta wakes up. Perfect timing, honestly. [DE] Er loggt sich genau dann aus, wenn Violetta aufwacht. Ehrlich gesagt perfektes Timing.",
-  "[EN] He throws dumb comments casually and carries professionally. [DE] Er wirft beiläufig dumme Kommentare ein und carried professionell.",
-  "[EN] If the game matters, Zücho suddenly gets very serious. [DE] Wenn das Spiel zählt, wird Zücho plötzlich sehr ernst.",
-  "[EN] Skill first, feelings later. [DE] Skill zuerst, Gefühle später.",
-  "[EN] Zücho min-maxes games and daily schedules equally hard. [DE] Zücho min-maxed Spiele und Tagesabläufe gleichermaßen hart.",
-  "[EN] He chose the top guild, not the comfy one. Cold, but effective. [DE] Er hat die Top-Gilde gewählt, nicht die gemütliche. Kalt, aber effektiv.",
-  "[EN] Trash talk is temporary. Rank is forever. [DE] Trash Talk ist temporär. Rang ist für immer.",
-  "[EN] Zücho plays all night so Violetta can wake up to peace. [DE] Zücho spielt die ganze Nacht, damit Violetta in Ruhe aufwachen kann.",
-  "[EN] Fun is nice. Winning is better. [DE] Spaß ist nett. Gewinnen ist besser.",
-  "[EN] Zücho talks like a menace and plays like a professional. [DE] Zücho redet wie eine Bedrohung und spielt wie ein Profi.",
-  "[EN] Sleep schedules rotate, performance stays consistent. [DE] Schlafpläne rotieren, die Leistung bleibt konstant.",
-  "[EN] He respects skill, rewards effort, and ignores excuses. [DE] Er respektiert Skill, belohnt Einsatz und ignoriert Ausreden.",
-  "[EN] Not playing with us isn't personal. It's strategic. [DE] Nicht mit uns zu spielen ist nichts Persönliches. Es ist strategisch.",
   ]}],
 ]);
 
@@ -645,6 +602,7 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
