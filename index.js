@@ -5,6 +5,7 @@ import path from "node:path";
 import cron from "node-cron";
 import { setupHiddenXp } from "./src/xp/xpListener.js";
 import { setupSecretWordTracker } from "./src/secret/secretWordListener.js";
+import { readFileSync } from "node:fs";
 
 // --- Daily tracking (RAM only) ---
 const seenDaily = new Map(); // userId -> dayKey
@@ -12,6 +13,8 @@ const lastBTriggerAt = new Map(); // userId -> timestamp (ms)
 const PERSON_B_COOLDOWN_MS = 2 * 60 * 60 * 1000; // 2 hours (change this)
 const lastEggAt = new Map();     // key: guildId:eggIndex -> timestamp
 const foundEggs = new Map();     // guildId -> Set(eggIndex) 
+const WEEKLY_CHANNEL_ID = process.env.WEEKLY_CHANNEL_ID;
+const WEEKLY_CHAMP_ROLE_ID = process.env.WEEKLY_CHAMP_ROLE_ID;
 
 const client = new Client({
   intents: [
@@ -505,6 +508,12 @@ function saveSchedule(obj) {
   fs.writeFileSync(DATA_FILE, JSON.stringify(obj, null, 2), "utf8");
 }
 
+function loadSecretWords() {
+  const p = "/app/data/secret-words.json";
+  const data = JSON.parse(fs.readFileSync(p, "utf8"));
+  return Array.isArray(data.words) ? data.words.filter(Boolean) : [];
+}
+
 client.once("ready", async () => {
   console.log(`✅ Logged in as ${client.user.tag}`);
 
@@ -567,10 +576,107 @@ client.once("ready", async () => {
       content: `<@&${ROLE_1}> <@&${ROLE_2}> ${text}`,
       allowedMentions: { roles: [ROLE_1, ROLE_2] }, // only these roles can be pinged
     });
+    
 
     // mark only after a successful send
     markSentToday(slot);
   }
+const WEEKLY_CHANNEL_ID = process.env.WEEKLY_CHANNEL_ID;
+const WEEKLY_CHAMP_ROLE_ID = process.env.WEEKLY_CHAMP_ROLE_ID;
+
+// load secret words from the mounted DB folder (same mount as sqlite)
+function loadSecretWords() {
+  const p = "/app/data/secret-words.json";
+  const data = JSON.parse(readFileSync(p, "utf8"));
+  return Array.isArray(data.words) ? data.words.filter(Boolean) : [];
+}
+
+async function rotateWeeklySecretWord() {
+  if (!WEEKLY_CHANNEL_ID || !WEEKLY_CHAMP_ROLE_ID) {
+    console.error("Missing WEEKLY_CHANNEL_ID or WEEKLY_CHAMP_ROLE_ID in env.");
+    return;
+  }
+
+  const words = loadSecretWords();
+  if (!words.length) {
+    console.error("secret-words.json has no words.");
+    return;
+  }
+
+  // pick guild(s) — if you only run one guild, this is fine
+  // if multi-guild later, loop client.guilds.cache
+  for (const [guildId, guild] of client.guilds.cache) {
+    // Get top 3
+    const top = secretSvc.getTop(guildId, 3);
+
+    // Announce winners
+    const channel = await client.channels.fetch(WEEKLY_CHANNEL_ID).catch(() => null);
+    if (!channel || !channel.isTextBased()) continue;
+
+    if (!top.length) {
+      await channel.send("🏁 **Weekly Mystery Results**\nNo one found the word this week… suspicious 👀");
+    } else {
+      const lines = top.map((r, i) => `${i + 1}. <@${r.user_id}> — **${r.score}**`);
+      await channel.send(`🏁 **Weekly Mystery Results**\n${lines.join("\n")}`);
+
+      // Assign champion role to #1
+      const champUserId = top[0].user_id;
+      const member = await guild.members.fetch(champUserId).catch(() => null);
+      const role = guild.roles.cache.get(WEEKLY_CHAMP_ROLE_ID) ?? null;
+
+      if (member && role) {
+        // remove role from anyone who currently has it
+        const holders = role.members;
+        for (const [, m] of holders) {
+          await m.roles.remove(role).catch(() => null);
+        }
+        await member.roles.add(role).catch(() => null);
+      }
+
+      // Optional: set a weekly /title override for champ (see next section)
+      // xpService.setWeeklyTitle(guildId, champUserId, "👑 Braincell of the Week", Date.now() + 7*24*60*60*1000);
+    }
+
+    // Rotate word (avoid repeating current)
+    const current = secretSvc.getCurrentWord(guildId);
+    let next = words[Math.floor(Math.random() * words.length)];
+    if (words.length > 1) {
+      while (next === current) next = words[Math.floor(Math.random() * words.length)];
+    }
+
+    secretSvc.setCurrentWord(guildId, next);
+
+    // Reset scores for the new week
+    secretSvc.resetScores(guildId);
+
+    await channel.send("🔄 A new Mystery Word has been chosen for this week. Happy accidents, everyone.");
+  }
+}
+  
+  for (const [guildId] of client.guilds.cache) {
+    const currentWord = secretSvc.getCurrentWord(guildId);
+
+    if (!currentWord) {
+      const words = loadSecretWords();
+      if (words.length) {
+        const firstWord = words[Math.floor(Math.random() * words.length)];
+        secretSvc.setCurrentWord(guildId, firstWord);
+        console.log(`Initialized first secret word for guild ${guildId}`);
+      }
+    } else {
+      secretSvc.setCurrentWord(guildId, currentWord);
+    }
+  }
+  
+// Every Monday 00:05 Berlin time
+cron.schedule(
+  "5 0 * * 1",
+  async () => {
+    await rotateWeeklySecretWord();
+  },
+  { timezone: TIMEZONE }
+);
+  
 
   // 20:00 CET/CEST
   cron.schedule(
@@ -602,6 +708,7 @@ client.once("ready", async () => {
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
