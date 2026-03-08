@@ -489,9 +489,6 @@ const eggsTotal = EASTER_EGGS.length;
 
 
 
-const CHANNEL_ID = "1457712693254422569";
-const ROLE_1 = "1431178070403977320";
-const ROLE_2 = "1431174965553664010";
 
 const TIMEZONE = "Europe/Berlin";
 const DATA_FILE = path.join(process.cwd(), "schedule.json");
@@ -562,20 +559,6 @@ client.once("ready", async () => {
     saveSchedule(schedule);
   }
 
-  async function sendPing(slot, text) {
-    // guard: only on the right 3-day cadence
-    if (!isCorrectDay()) return;
-
-    // guard: only once per day per slot (persisted)
-    if (wasSentToday(slot)) return;
-
-    const channel = await client.channels.fetch(CHANNEL_ID).catch(() => null);
-    if (!channel || !channel.isTextBased()) return;
-
-    await channel.send({
-      content: `<@&${ROLE_1}> <@&${ROLE_2}> ${text}`,
-      allowedMentions: { roles: [ROLE_1, ROLE_2] }, // only these roles can be pinged
-    });
     
 
     // mark only after a successful send
@@ -676,38 +659,13 @@ cron.schedule(
   },
   { timezone: TIMEZONE }
 );
-  
-
-  // 20:00 CET/CEST
-  cron.schedule(
-    "0 20 * * *",
-    async () => {
-      await sendPing(
-        "20:00",
-        "[EN] Guild Boss in 30 Minutes, please come online soon! [DE] Gildenboss in 30 Minuten, bitte kommt bald online!"
-      );
-    },
-    { timezone: TIMEZONE }
-  );
-
-  // 20:25 CET/CEST
-  cron.schedule(
-    "25 20 * * *",
-    async () => {
-      await sendPing(
-        "20:25",
-        "[EN] Second reminder! Guild Boss in 5 Minutes! Hop on now!!! [DE] Zweite Erinnerung! Gildenboss in 5 Minuten! Kommt jetzt online!!!"
-      );
-    },
-    { timezone: TIMEZONE }
-  );
-});
 
 
 
 
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
