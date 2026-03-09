@@ -24,9 +24,7 @@ const client = new Client({
 });
 
 const xpService = setupHiddenXp(client, { cooldownMs: 45_000 });
-const secretSvc = setupSecretWordTracker(client, {
-  secretWord: process.env.SECRET_WORD,
-});
+const secretSvc = setupSecretWordTracker(client, {});
 const STATE_PATH = path.join(process.cwd(), "state.json");
 
 
@@ -600,7 +598,9 @@ function loadSecretWords() {
       secretSvc.setCurrentWord(guildId, currentWord);
     }
   }
-
+  
+await rotateWeeklySecretWord();  //temporary
+  
   cron.schedule(
     "5 0 * * 1",
     async () => {
@@ -611,6 +611,7 @@ function loadSecretWords() {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
