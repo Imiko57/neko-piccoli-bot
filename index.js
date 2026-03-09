@@ -599,8 +599,6 @@ function loadSecretWords() {
     }
   }
   
-await rotateWeeklySecretWord();  //temporary
-  
   cron.schedule(
     "5 0 * * 1",
     async () => {
@@ -611,6 +609,7 @@ await rotateWeeklySecretWord();  //temporary
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
