@@ -526,7 +526,7 @@ client.once("ready", async () => {
   // load secret words from the mounted DB folder (same mount as sqlite)
 function loadSecretWords() {
   const p = "/app/data/secret-words.json";
-  const data = JSON.parse(readFileSync(p, "utf8"));
+  const data = JSON.parse(fs.readFileSync(p, "utf8"));
   return Array.isArray(data.words) ? data.words.filter(Boolean) : [];
 }
   
@@ -611,6 +611,7 @@ await rotateWeeklySecretWord();  //temporary
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
