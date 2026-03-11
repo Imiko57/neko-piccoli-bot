@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { Client, GatewayIntentBits, EmbedBuilder } from "discord.js";
+import { Client, GatewayIntentBits, EmbedBuilder, AttachmentBuilder } from "discord.js";
 import fs from "node:fs";
 import path from "node:path";
 import cron from "node-cron";
@@ -315,8 +315,13 @@ const EASTER_EGGS = [
     replies: [
       "<:penisuwu:1475933479874072616>",
     ],
-    cooldownMs: 5 * 60 * 1000,
+    cooldownMs: 1,
   },
+  {
+  triggers: ["benis"],
+  imagePath: "./assets/benis.png",
+  cooldownMs: 1,
+}
 ];
 
 
@@ -345,7 +350,12 @@ for (let i = 0; i < EASTER_EGGS.length; i++) {
     foundEggs.set(message.guild.id, set);
     scheduleSave();
 
-    await message.reply(randomFrom(egg.replies));
+    if (egg.imagePath) {
+  const attachment = new AttachmentBuilder(egg.imagePath);
+  await message.reply({ files: [attachment] });
+} else {
+  await message.reply(randomFrom(egg.replies));
+}
     break;
   }
 }
@@ -609,6 +619,7 @@ function loadSecretWords() {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
