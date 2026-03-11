@@ -319,7 +319,7 @@ const EASTER_EGGS = [
   },
   {
   triggers: ["benis"],
-  imagePath: "./assets/benis.png",
+  imagePath: "./assets/benis.jpg",
   cooldownMs: 1,
 }
 ];
@@ -619,6 +619,7 @@ function loadSecretWords() {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
 
 
 
