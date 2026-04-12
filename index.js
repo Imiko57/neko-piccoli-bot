@@ -92,6 +92,17 @@ const DAILY_USERS = new Map([
     "[EN] Calm like fresh snow, expressive like a bunny. [DE] Ruhig wie frischer Schnee, ausdrucksstark wie ein Häschen.",
     "[EN] Snow Bunny energy: cozy, cute, and emotionally invested. [DE] Schnee Häschen-Energie: gemütlich, süß und emotional dabei.",
   ]}],
+  ["717450712136679517", {
+  name: "Keksqueen",
+  replies: [
+    "[EN] KQ-V 2025 has broken out. Please go to the nearest shelter! [DE] KQ-V 2025 ist ausgebrochen. Bitte begeben Sie sich in den nächstgelegenen Schutzraum!",
+    //"[EN] Ah... you again. Let's see what chaos you bring today. [DE] Ah... du schon wieder. Mal sehen, welches Chaos du heute bringst.",
+    //"[EN] Daily check: still choosing beer over water? [DE] Täglicher Check: immer noch Bier statt Wasser?",
+    //"[EN] A new day, a new questionable decision. [DE] Ein neuer Tag, eine neue fragwürdige Entscheidung.",
+    //"[EN] I was hoping for peace today… and then you typed. [DE] Ich hatte heute auf Ruhe gehofft… und dann hast du geschrieben.",
+    //"[EN] Good morning. Please behave today. (You won’t.) [DE] Guten Morgen. Bitte benimm dich heute. (Wirst du nicht.)",
+  ]
+}],
   ["340204841617850369", {
     name: "Endless",
     replies: [
