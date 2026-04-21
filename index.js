@@ -24,7 +24,9 @@ const client = new Client({
 });
 
 const xpService = setupHiddenXp(client, { cooldownMs: 45_000 });
-const secretSvc = setupSecretWordTracker(client, {});
+const secretSvc = setupSecretWordTracker(client, {
+  cooldownMs: 20 * 60 * 1000,
+});
 const STATE_PATH = path.join(process.cwd(), "state.json");
 
 
