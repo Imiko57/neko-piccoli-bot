@@ -525,6 +525,11 @@ function saveSchedule(obj) {
   fs.writeFileSync(DATA_FILE, JSON.stringify(obj, null, 2), "utf8");
 }
 
+function loadSecretWords() {
+  const p = "/app/data/secret-words.json";
+  const data = JSON.parse(fs.readFileSync(p, "utf8"));
+  return Array.isArray(data.words) ? data.words.filter(Boolean) : [];
+}
 
 client.once("ready", async () => {
   console.log(`✅ Logged in as ${client.user.tag}`);
