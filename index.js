@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import cron from "node-cron";
 import { setupHiddenXp } from "./src/xp/xpListener.js";
-import { setupSecretWordTracker } from "./src/secret/secretWordListener.js";
+import { setupSecretWordTracker, runFraudHumiliations } from "./src/secret/secretWordListener.js";
 
 // --- Daily tracking (RAM only) ---
 const seenDaily = new Map(); // userId -> dayKey
@@ -14,6 +14,9 @@ const lastEggAt = new Map();     // key: guildId:eggIndex -> timestamp
 const foundEggs = new Map();     // guildId -> Set(eggIndex) 
 const WEEKLY_CHANNEL_ID = process.env.WEEKLY_CHANNEL_ID;
 const WEEKLY_CHAMP_ROLE_ID = process.env.WEEKLY_CHAMP_ROLE_ID;
+const secretSvc = setupSecretWordTracker(client, {
+  cooldownMs: 20 * 60 * 1000,
+});
 
 const client = new Client({
   intents: [
@@ -533,26 +536,24 @@ client.once("ready", async () => {
   let schedule = loadSchedule();
   if (!schedule) schedule = {};
 
-  // startDate (anchor) - only set if missing
   if (!schedule.startDate) {
-    const todayKey = berlinDayKey(new Date()); // "YYYY-MM-DD" in Europe/Berlin
+    const todayKey = berlinDayKey(new Date());
     const anchored = new Date(`${todayKey}T00:00:00`);
     schedule.startDate = anchored.toISOString();
   }
 
-  // sent markers: { "YYYY-MM-DD": { "20:00": true, "20:25": true } }
   if (!schedule.sent) schedule.sent = {};
 
-  // persist any init changes
   saveSchedule(schedule);
 
-  // load secret words from the mounted DB folder (same mount as sqlite)
-function loadSecretWords() {
-  const p = "/app/data/secret-words.json";
-  const data = JSON.parse(fs.readFileSync(p, "utf8"));
-  return Array.isArray(data.words) ? data.words.filter(Boolean) : [];
-}
-  
+  cron.schedule(
+    "0 10,20 * * *",
+    async () => {
+      await runFraudHumiliations(client, secretSvc, WEEKLY_CHANNEL_ID);
+    },
+    { timezone: TIMEZONE }
+  );
+
   const startDate = new Date(schedule.startDate);
 
   async function rotateWeeklySecretWord() {
@@ -591,6 +592,23 @@ function loadSecretWords() {
         }
       }
 
+      const fraudRole = guild.roles.cache.get("1496227027798458518") ?? null;
+      if (fraudRole) {
+        for (const [, m] of fraudRole.members) {
+          await m.roles.remove(fraudRole).catch(() => null);
+        }
+      }
+
+      const fraudNickTargets = secretSvc.getFraudNickTargets(guildId);
+      for (const row of fraudNickTargets) {
+        const member = await guild.members.fetch(row.user_id).catch(() => null);
+        if (member && member.manageable) {
+          await member.setNickname(row.old_nick ?? null).catch(() => null);
+        }
+      }
+
+      secretSvc.clearWeeklyPunishments(guildId);
+
       const current = secretSvc.getCurrentWord(guildId);
       let next = words[Math.floor(Math.random() * words.length)];
 
@@ -621,7 +639,7 @@ function loadSecretWords() {
       secretSvc.setCurrentWord(guildId, currentWord);
     }
   }
-  
+
   cron.schedule(
     "5 0 * * 1",
     async () => {
