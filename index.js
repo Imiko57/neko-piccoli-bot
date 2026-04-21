@@ -14,9 +14,6 @@ const lastEggAt = new Map();     // key: guildId:eggIndex -> timestamp
 const foundEggs = new Map();     // guildId -> Set(eggIndex) 
 const WEEKLY_CHANNEL_ID = process.env.WEEKLY_CHANNEL_ID;
 const WEEKLY_CHAMP_ROLE_ID = process.env.WEEKLY_CHAMP_ROLE_ID;
-const secretSvc = setupSecretWordTracker(client, {
-  cooldownMs: 20 * 60 * 1000,
-});
 
 const client = new Client({
   intents: [
@@ -27,6 +24,9 @@ const client = new Client({
 });
 
 const xpService = setupHiddenXp(client, { cooldownMs: 45_000 });
+const secretSvc = setupSecretWordTracker(client, {
+  cooldownMs: 20 * 60 * 1000,
+});
 const STATE_PATH = path.join(process.cwd(), "state.json");
 
 
